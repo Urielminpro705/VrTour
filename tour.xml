@@ -71,7 +71,7 @@
 	
 
 	
-	<scene name="scene_img_20250905_165304141_mfnr_panorama" title="IMG_20250905_165304141_MFNR Panorama" onstart="" thumburl="panos/IMG_20250905_165304141_MFNR_Panorama.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+	<scene name="scene_img_20250905_165304141_mfnr_panorama" title="IMG_20250905_165304141_MFNR Panorama" onstart="" havevrimage.mobilevr="false" havevrimage.no-mobilevr="true" thumburl="panos/IMG_20250905_165304141_MFNR_Panorama.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
 		
 		<control bouncinglimits="calc:image.cube ? true : false" />
 
@@ -79,8 +79,12 @@
 
 		<preview url="panos/IMG_20250905_165304141_MFNR_Panorama.tiles/preview.jpg" />
 
-		<image>
+		<image if="!(webvr.isenabled OR device.mobilevr)">
 			<cube url="panos/IMG_20250905_165304141_MFNR_Panorama.tiles/%s/l%l/%0v/l%l_%s_%0v_%0h.jpg" multires="512,1024,1792,3584,7168" />
+		</image>
+
+		<image if="webvr.isenabled OR device.mobilevr">
+			<cube url="panos/IMG_20250905_165304141_MFNR_Panorama.tiles/vr/pano_%s.jpg" />
 		</image>
 
 	</scene>
